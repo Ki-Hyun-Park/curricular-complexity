@@ -1,5 +1,6 @@
 library(rvest)
 library(stringr)
+library(dplyr)
 url <- "https://www.registrar.ucla.edu/Faculty-Staff/Courses-and-Programs/Department-and-Subject-Area-Codes"
 
 code_table <- url %>%
@@ -13,7 +14,7 @@ code_table <- url %>%
           html_nodes('td:nth-child(4)') %>%
           html_text %>%
           str_trim(side = "both")) %>%
-  as_tibble()
+  write.csv(file = "abbrev_table.csv", row.names = FALSE)
 
 
 

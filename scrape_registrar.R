@@ -1,22 +1,11 @@
 library(rvest)
 library(stringr)
+library(dplyr)
+
 # URL for math major
 url <- "http://catalog.registrar.ucla.edu/ucla-catalog19-20-961.html"
 
-# page <- read_html(url)
-# rank_data_html <- html_text(html_nodes(page,'p, h2'))
-# 
-# prep_marker <- str_which(rank_data_html, "Preparation for the Major")
-# prep_par <- rank_data_html[prep_marker + 1]
-# 
-# prep_reqs <- str_split_fixed(prep_par, "\\.", 2)[1]
-# 
-# # remove "Required: "
-# prep_reqs <- str_replace(prep_reqs, "Required: ", "")
-# 
-# prep_reqs_list <- str_split(prep_reqs, ", ")
-
-# one-step approach
+# get full list of requisites
 full_reqs <- url %>%
   read_html %>%                          # read as html 
   html_nodes('p, h2') %>%                # query the paragraph under h2 headings
@@ -44,13 +33,14 @@ prepend <- function(req_vec){
 prepend_reqs <- lapply(full_reqs, prepend)
 
 
+# abbrev_table <- read.csv("abbrev_table.csv")
 prepend_reqs[[1]] %>%
-  str_replace_all(setNames(code_table$code, code_table$subject))
+  str_replace_all(setNames(abbrev_table$code, abbrev_table$subject))
 
 
 
 # set up OR logic
 
 
-setNames(code_table[, "subject"], code_table["code"])
+setNames(abbrev_table[, "subject"], abbrev_table["code"])
 
