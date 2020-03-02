@@ -5,7 +5,7 @@ library(dplyr)
 # URL for math major
 url <- "http://catalog.registrar.ucla.edu/ucla-catalog19-20-961.html"
 
-
+# url <- "http://catalog.registrar.ucla.edu/ucla-catalog19-20-596.html"
 # regex patterns for extracting subject, course, or subject and course
 subject_pattern <- "(?<!\\d)[A-Z][A-Z &-]+(?!\\d)"
 course_pattern <- "[CM]{0,2}\\d+[A-Z]{0,3}"
