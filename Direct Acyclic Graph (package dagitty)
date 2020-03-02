@@ -1,0 +1,39 @@
+library(dagitty)
+library(ggdag)
+
+dagify(y~~x) %>%  ggdag_canonical()
+
+econ_major_courses <- dagify(econ11 ~ econ1 + econ2,
+       econ11 ~ math31a + math31b, 
+       math31b ~ math31a, 
+       econ41 ~ math31a + math31b, 
+       econ101 ~ econ11,
+       econ102~econ101, 
+       econ103~~econ103l, 
+       econ103 ~ econ11 + econ41, 
+       econ134 ~ econ101,
+       econ137 ~ econ11,
+       econ145 ~ econ101,
+       econ160 ~ econ102,
+       econ106g ~ econ101,
+       econ195 ~ econ101,
+       
+       
+      
+       labels = c("econ1" = "Econ 1", 
+                  'econ11' = "Econ 11", 
+                  'econ2' = 'Econ 2',
+                  "econ41" = "Econ 41",
+                  "math31a" = "Math 31A", 
+                  "math31b" = "Math 31B", 
+                  "econ101" = 'Econ 101', 
+                  "econ102" = "Econ 102",
+                  "econ103" = "Econ 103",
+                  'econ134' = "Econ 134",
+                  'econ137' = "Econ 137",
+                  'econ145' = "Econ 145",
+                  'econ160' = "Econ 160",
+                  'econ106g' = "Econ 106G",
+                  'econ195' = "Econ 195"))
+
+ggdag(econ_major_courses, text = TRUE)
