@@ -78,4 +78,4 @@ visnet %>%
   visEdges(arrows = "from") %>% 
   visHierarchicalLayout(direction = "LR", levelSeparation = 500) %>% 
   visSave(file="network.html", selfcontained = TRUE, background = "white")
-
+visnet
