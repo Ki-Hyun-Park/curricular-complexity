@@ -108,4 +108,32 @@ visnet %>%
 visnet
 
 
+#### Political Science Major
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15),
+  label = c("POL SCI 10", "POL SCI 20", "POL SCI 30", "POL SCI 40", "STATS 10", "POL SCI 140A", "POL SCI 140B", "POL SCI 140C", "POL SCI M111A", "POL SCI 120A", "POL SCI 150", "POL SCI 151A", "POL SCI 151B", "POL SCI 151C", "POL SCI 171A")
+  # value = ,
+  # title = ,
+)
+
+edges <- tibble(
+  from = c(4, 4, 4, 3),
+  to =   c(6, 7, 8, 15)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 500) %>% 
+  visSave(file="network.html", selfcontained = TRUE, background = "white")
+visnet
+
+
+
+
 
