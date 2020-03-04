@@ -133,6 +133,34 @@ visnet %>%
   visSave(file="network.html", selfcontained = TRUE, background = "white")
 visnet
 
+
+#### DESMA(Design Media Arts) Major
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21),
+  label = c("DESMA 8", "DESMA 10", "DESMA 21", "DESMA 22", "DESMA 24", "DESMA 25", "DESMA 28", "DESMA 101", "DESMA 104", "DESMA 152", "DESMA 153", "DESMA 154", "DESMA 156", "DESMA 157", "DESMA 161", "DESMA 160", "DESMA 171", "DESMA 172", "DESMA 159A", "DESMA 159B", "DESMA 159C")
+  # value = ,
+  # title = ,
+)
+
+edges <- tibble(
+  from = c(3, 4, 6, 4, 7, 8, 9, 3, 4, 6, 9, 8, 5, 7, 8, 7, 12, 9, 8, 14, 9, 13, 8, 9, 14, 15, 16, 17, 18, 5, 7, 8, 9, 11, 13, 16, 17, 18, 5, 7, 8, 9, 12, 16, 17, 18),
+  to =   c(7, 7, 7,10,10,10,11,12,12,12,12,13,14,14,14,15, 15,16,17, 17,18, 18, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21, 21, 21, 21)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 500) %>% 
+  visSave(file="network.html", selfcontained = TRUE, background = "white")
+visnet
+
+
+
 #######Situ#######
 
 library(visNetwork)
