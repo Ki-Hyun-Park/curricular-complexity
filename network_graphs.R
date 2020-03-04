@@ -133,7 +133,75 @@ visnet %>%
   visSave(file="network.html", selfcontained = TRUE, background = "white")
 visnet
 
+#######Situ#######
 
+library(visNetwork)
+library(tibble)
 
+# Computer Science Major
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37),
+  label = c("MATH 31A", "MATH 31B", "MATH 32A", "MATH 32B", "MATH 33A", 
+            "MATH 33B", "MATH 61", "PHYSICS 1A", "PHYSICS 1B", "PHYSICS 1C", 
+            "PHYSICS 4AL", "COM SCI 31", "COM SCI 32", "COM SCI 33", "COM SCI 35L", 
+            "COM SCI M51A","COM SCI 111", "COM SCI 118", "COM SCI 131", "COM SCI M151B", 
+            "COM SCI M152A", "COM SCI 180","COM SCI 181", "MATH 170A", "COM SCI 130", 
+            "COM SCI 145", "COM SCI M146", "COM SCI 174A", "COM SCI 132", "COM SCI 161",
+            "CHEM 20A", "CHEM 20B", "LIFESCI 7A", "MGMT 180", "ENGR 110",
+            "ENGR 111", "")
+)
+
+edges <- tibble(
+  from = c(1, 1, 2, 2, 3, 5, 1, 2, 1, 2, 3, 8, 4, 5, 9, 9, 12, 13, 12, 13, 10, 13, 14, 15, 17, 14, 15, 14, 16, 16, 13, 7, 22, 5, 17, 19, 22, 24, 14, 13, 19, 22, 1, 31, 2, 33, 34, 35, 36, 32),
+  to = c(2, 3, 4, 5, 4, 6, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 13, 14, 15, 15, 16, 17, 17, 17, 18, 19, 19, 20, 20, 21, 22, 22, 23, 24, 25, 25, 26, 27, 27, 28, 29, 30, 31, 32, 32, 37, 37, 37, 37, 37)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150)
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150) %>% 
+  visSave(file="network.html", selfcontained = TRUE, background = "white")
+
+# World Arts Major
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+  label = c("WL ARTS 1", "WL ARTS 20", "WL ARTS 24", "WL ARTS 33", "WL ARTS 2",
+            "WL ARTS 100A", "WL ARTS 104", "WL ARTS 124", "WL ARTS 103", "WL ARTS 114",
+            "WL ARTS 144", "WL ARTS C146", "WL ARTS C158", "WL ARTS 186A", "WL ARTS 186B", "")
+)
+
+# still working on this
+edges <- tibble(
+  from = c(1, 1, 2, 2, 3, 5, 1, 2, 1, 2, 3, 8, 4, 5, 9, 9, 12, 13, 12, 13, 10, 13, 14, 15, 17, 14, 15, 14, 16, 16, 13, 7, 22, 5, 17, 19, 22, 24, 14, 13, 19, 22, 1, 31, 2, 33, 34, 35, 36, 32),
+  to = c(2, 3, 4, 5, 4, 6, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 13, 14, 15, 15, 16, 17, 17, 17, 18, 19, 19, 20, 20, 21, 22, 22, 23, 24, 25, 25, 26, 27, 27, 28, 29, 30, 31, 32, 32, 37, 37, 37, 37, 37)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150)
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150) %>% 
+  visSave(file="network.html", selfcontained = TRUE, background = "white")
 
 
