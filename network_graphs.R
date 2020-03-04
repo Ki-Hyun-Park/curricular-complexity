@@ -79,3 +79,33 @@ visnet %>%
   visHierarchicalLayout(direction = "LR", levelSeparation = 500) %>% 
   visSave(file="network.html", selfcontained = TRUE, background = "white")
 visnet
+
+
+
+#### Art Major
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21),
+  label = c("ART 1A", "ART 1B", "ART 11A", "ART 11B", "ART 11D", "ART 11E", "ART 31A", "ART 31B", "ART 31C", "ART HIS 22", "ART 100", "ART 132", "ART HIS M110A", "ART 130", "ART 133", "ART 137", "ART C180", "ART 145", "ART 147", "ART 148", "ART 150")
+  # value = ,
+  # title = ,
+)
+
+edges <- tibble(
+  from = c(7, 8, 7, 8, 9, 7, 8, 9, 1, 3, 5, 2, 4, 6),
+  to =   c(8, 9,11,11,11,12,12,12,14,15,16,18,19,20)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 500) %>% 
+  visSave(file="network.html", selfcontained = TRUE, background = "white")
+visnet
+
+
+
