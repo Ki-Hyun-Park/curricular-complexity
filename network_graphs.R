@@ -74,5 +74,8 @@ vis.links <- edges
 vis.links$arrows <- "middle"
 
 visnet <- visNetwork(vis.nodes, vis.links)
-visnet
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 500) %>% 
+  visSave(file="network.html", selfcontained = TRUE, background = "white")
 
