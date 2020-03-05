@@ -49,7 +49,6 @@ vis.nodes$shape <- "circle"
 visnet <- visNetwork(vis.nodes, vis.links)
 visnet
 
-<<<<<<< HEAD
 
 # and one for the entire math major
 label <- c(
