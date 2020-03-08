@@ -1,3 +1,6 @@
+library(dplyr)
+library(stringr)
+library(visNetwork)
 # Setup for network graphing: single-course
 # Here, it only makes sense to consider prerequisites, not postrequisites
 
