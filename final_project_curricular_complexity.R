@@ -241,7 +241,174 @@ visnet %>%
   visPhysics(hierarchicalRepulsion = list(springLength = 200)) %>%
   visHierarchicalLayout(direction = "RL")
 
+##### Computer Science Major #####
 
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36),
+  label = c("MATH 31A", "MATH 31B", "MATH 32A", "MATH 32B", "MATH 33A", 
+            "MATH 33B", "MATH 61", "PHYSICS 1A", "PHYSICS 1B", "PHYSICS 1C", 
+            "PHYSICS 4AL", "COM SCI 31", "COM SCI 32", "COM SCI 33", "COM SCI 35L", 
+            "COM SCI M51A","COM SCI 111", "COM SCI 118", "COM SCI 131", "COM SCI M151B", 
+            "COM SCI M152A", "COM SCI 180","COM SCI 181", "MATH 170A", "COM SCI 130", 
+            "COM SCI 145", "COM SCI M146", "COM SCI 174A", "COM SCI 132", "COM SCI 161",
+            "CHEM 20A", "CHEM 20B", "LIFESCI 7A", "MGMT 180", "ENGR 110",
+            "ENGR 111"),
+  shape ='circle'
+)
+
+edges <- tibble(
+  from = c(1, 1, 2, 2, 3, 5, 1, 2, 1, 2, 3, 8, 4, 5, 9, 9, 12, 13, 12, 13, 10, 13, 14, 15, 17, 14, 15, 14, 16, 16, 13, 7, 22, 5, 17, 19, 22, 24, 14, 13, 19, 22, 1, 31, 2),
+  to = c(2, 3, 4, 5, 4, 6, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 13, 14, 15, 15, 16, 17, 17, 17, 18, 19, 19, 20, 20, 21, 22, 22, 23, 24, 25, 25, 26, 27, 27, 28, 29, 30, 31, 32, 32)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150)
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150) %>% 
+  visSave(file="comsci.html", selfcontained = TRUE, background = "white")
+
+
+##### World Arts Major #####
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+  label = c("WL ARTS 1", "WL ARTS 20", "WL ARTS 24", "WL ARTS 33", "WL ARTS 2",
+            "WL ARTS 100A", "WL ARTS 104", "WL ARTS 124", "WL ARTS 103", "WL ARTS 114",
+            "WL ARTS 144", "WL ARTS C146", "WL ARTS C158", "WL ARTS 186A", "WL ARTS 186B", ""),
+  shape ='circle'
+)
+
+edges <- tibble(
+  from = c(2, 14),
+  to = c(7,15)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout()
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout() %>% 
+  visSave(file="wlarts.html", selfcontained = TRUE, background = "white")
+
+
+##### Music Major #####
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20),
+  label = c("MUSC 3", "MUSC M6A", "MUSC M6B",  "MUSC M6C",  "MUSC 20A",
+            "MUSC 20B",  "MUSC 20C",  "MUSC 60A", "MUSC 185A", "MUSC 120A", 
+            "MUSC 120B", "MUSC 120C", "MUSC 140A", "MUSC 140B", "MUSC 140C",
+            "MUSC 160A", "MUSC 160B", "MUSC C175A", "ETHNMUS 101", "ETHNMUS 105"
+            ),
+  shape ='circle'
+)
+
+edges <- tibble(
+  from = c(1, 2, 3, 5, 6, 7, 10, 11, 2, 13, 14 ),
+  to = c(2, 3, 4, 6, 7, 10, 11, 12, 13, 14, 15)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "UD", levelSeparation = 150)
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "UD", levelSeparation = 150) %>% 
+  visSave(file="musc.html", selfcontained = TRUE, background = "white")
+
+##### Aerospace Engineering Major #####
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36),
+  label = c("MATH 31A", "MATH 31B", "MATH 32A", "MATH 32B", "MATH 33A",
+            "CHEM 20A", "CHEM 20B", "CHEM 20L", "MECH&AE M20", "MECH&AE 82",
+            "PHYSICS 1A", "PHYSICS 1B", "PHYSICS 1C", "PHYSICS 4AL", "PHYSICS 4BL",
+            "MECH&AE 1", "MECH&AE 101", "MECH&AE 102", "MECH&AE 103", "MECH&AE 105A",
+            "MECH&AE 105D", "MECH&AE 107", "MECH&AE 150A", "MECH&AE 157", "MECH&AE 166A",
+            "MECH&AE 171A", "MECH&AE 150B", "MECH&AE C150P", "MECH&AE 154A", "MECH&AE 154S",
+            "MECH&AE 157A", "MECH&AE C150R", "MECH&AE 161A", "MGMT 180", "ENGR 110",
+            "ENGR 111"),
+  shape ='circle'
+)
+
+edges <- tibble(
+  from = c(1, 1, 2, 2, 3, 1, 6, 2, 7, 5, 5, 2, 3, 11, 4, 12, 5, 12, 13, 2, 11, 17, 5, 4, 5, 12, 7, 4, 10, 19, 20, 9, 10, 10, 19, 18, 19, 20, 10, 17, 22, 23, 20, 23, 30, 27, 23, 24, 14, 15, 18),
+  to = c(2, 3, 4, 5, 4, 6, 7, 7, 8, 9, 10, 11, 11, 12, 12, 13, 13, 14, 15, 17, 17, 18, 18, 19, 19, 19, 20, 20, 21, 21, 21, 22, 22, 23, 23, 24, 24, 24, 25, 25, 26, 27, 28, 28, 29, 30, 31, 31, 32, 32, 33)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 100)
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 100) %>% 
+  visSave(file="ae.html", selfcontained = TRUE, background = "white")
+
+##### Russian Major #####
+
+nodes <- tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15),
+  label = c("RUSSN 6", "RUSSN 25", "RUSSN 101A", "RUSSN 101B", "RUSSN 101C",
+            "RUSSN 102A", "RUSSN 102B", "RUSSN 102C", "HIST 127A", "HIST 127B",
+            "HIST 127C", "HIST 127D", "SLAVC 191TA", "SLAVC 191TB", "SLAVC 191TC"),
+  shape ='circle'
+)
+
+edges <- tibble(
+  from = c(1, 3, 4, 5, 6, 7, 13, 14),
+  to = c(3, 4, 5, 6, 7, 8, 14, 15)
+)
+
+vis.nodes <- nodes
+vis.links <- edges
+vis.links$arrows <- "middle"
+
+visnet <- visNetwork(vis.nodes, vis.links)
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 150)
+
+visnet
+
+visnet %>% 
+  visEdges(arrows = "from") %>% 
+  visHierarchicalLayout() %>% 
+  visSave(file="russn.html", selfcontained = TRUE, background = "white") 
 
 #======================#
 ##### WEB SCRAPING #####
