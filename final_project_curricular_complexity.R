@@ -44,6 +44,9 @@ requisites_clean <- requisites %>%
          reqs = vapply(reqs, transpose_prefix, "a", USE.NAMES = FALSE)) %>%
   select(course, reqs, everything())
 
+# Create CSV file with cleaned data
+# write.csv(requisites_clean, "curricular_complexity_requisites_cleaned.csv")
+
 # Create a list of all courses included in the requisites table
 all_courses <- requisites_clean %>%
   select(course, reqs) %>%
